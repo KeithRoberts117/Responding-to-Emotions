@@ -1,0 +1,88 @@
+---
+title: "Information on NOLDUS' AI FaceReader"
+author: "Keith Roberts"
+format: pdf
+---
+
+This document is about the Noldus AI facereader. It is a doc with some breakdown/ general notes on how it works. This doc can be expanded as we move forward with the project.
+
+The AI facereader can be found here: https://noldus.com/facereader
+
+Facereader 10 has some significant improvements over the older versions including vocal tone and intensity nad extracting physiological readings with no extra equipment
+
+
+
+On the Noldus website there are several white papers that give more in depth analysis on the tool. I will start with those and provide summaries of what these white papers say.
+
+### Facereader Methodolgy
+
+What is it?
+Facereader (FR) is a program to detect facial expressions.
+It has been trained using deep learning and neural networks to accuractely classify the 6 major emotions: happy, sad, angry, surprised, scared, disgusted and neutral -- these are basic or universal emotions described by Ekman (1970). 
+
+How does it work:
+
+Face finding -- position of face is found using deep learning face finding algorithm. 
+Face Modelling -- deep neural network to model the face and pin the location of 468 key points on the face. This is how it establishes "landmarks" on the face
+Face Classification -- deep artificial neural network recognizes patterns of emotions to classify the emotion. The training images (100,000) have been manually annotated for training the program
+
+General Model -- 91% accurate
+East-Asian Model -- 93% accurate
+
+### Calibration
+
+May be effective as a way to get more accurate readings.
+2 Categories -- continuous or participant
+Participant calibration --  use images or camera/ video frames in
+which the participant looks neutral. The calibration procedure uses the
+image, or frame with the lowest model error and uses the expressions other than neutral found in this image for calibration
+
+### FRs Output
+
+Classification of each participants facial expressions
+visualised in different charts
+Expression contains "intensity" value between 0 and 1 (absent or fully present, respecitively)
+However, sum of intesity values of expression is often not equal to one because mulstiple emotions might be present at once
+
+Valence:
+indicates emotional state subject -- positive or negative. Happy is purely positive, anger is purely negative; Surprised can be either
+
+Calcualted as the intensity of ‘happy’ minus the intensity of the negative expression with the highest intensity. For instance, if the intensity of ‘happy’ is 0.8 and the intensities of ‘sad’, ‘angry’, ‘scared’ and ‘disgusted’ are 0.2, 0.0, 0.3, and 0.2, respectively, then the valence is 0.8 – 0.3 = 0.5.
+
+Arousal:
+Indicates whether the participant is "active of not active"
+Based on the activation of 20 "action units" (AUs) of the Facial Action Coding System (FACS) Arousal is calculated as follows:
+1.The activation values (AV) of 20 AUs are taken as input. These are AU 1, 2, 4,
+5, 6, 7, 9, 10, 12, 14, 15, 17, 20, 23, 24, 25, 26, 27, and the inverse of 43. The value of AU43 (eyes closed) is inverted because it indicates low arousal instead
+of high arousal like the other AUs.
+
+2. The average AU activation values (AAV) are calculated over the last 60
+seconds. During the first 60 seconds of the analysis, the AAV is calculated
+over the analysis up to that moment. AAV = Mean (AVpast 60 seconds)
+
+3. The average AU activation values (AAV) are subtracted from the current
+AU activation values (AV). This is done to correct for AUs that are contin-
+uously activated and might indicate an individual bias. This results in the
+Corrected Activation Values (CAV). CAV = Max(0, AV – AAV)
+
+4. The arousal is calculated from these CAV values by taking the mean of the
+five highest values. Arousal = Mean (5 max values of CAV)
+Several add-ons are also possible including action units, and a measure of skin conductance through the "flushing" of the face during readings
+
+
+
+Several other "addons" are presented on the site -- These might be important to look into because, as the Noldus website makes clear:
+
+"Variation is the norm when it comes to measures of emotion. One happy person might fall down to her knees and shed tears of joy (like Simona Halep winning Wimbledon), while another person might just smile and look like he is going to get another beer from the fridge (like Novak Djokovic winning Wimbledon).
+
+Obviously, this poses a challenge when measuring emotions. Not only individual differences and the context need to be taken into account; optimal measurement of emotion requires a multimodal approach. Assessment of facial expressions, behavioral and physiological responses will not necessarily be correlated, so all need to be measured in order to assess experience of emotion."
+
+-- site then provides link to NOLDUSHUB which provides a dashboard with a host of features for accurately measuring emotions -- Price TBD
+
+### additional section
+
+Posed or genuine expressions: this is a good section to revisit as possible defence for criticisms
+
+Facial expressions across popualtions/ cultures.. again revisit if looking for defensive reasoning
+ 
+ 
