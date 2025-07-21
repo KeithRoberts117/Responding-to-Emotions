@@ -4,10 +4,43 @@ author: "Keith Roberts and Andrew Leal"
 format: pdf
 ---
 
-
-
-
 # Responding to Emotions: Effects of Emotional Tone on Decision-Making
+
+### Introduction
+
+A consequence of being human is that, whether conscious or not, emotions are inextricably linked to decision-making. Theoretical and empirical work in decision theory and psychological game theory has explored several channels through which emotions can impact an individual’s decision process. This large and growing body of research has focused almost exclusively on the emotions felt by the decision maker. In contrast, we seek to study **how the emotional content of a message received by a decision maker impacts their choices and the degree to which differences can be attributed to emotional contagion**. 
+
+Embedding requests with emotional content is common in practice. Charities tend to use collaborative messaging with undertones of sadness and pleading. Politicians often use a mix of collaborative and competitive messaging when campaigning or promoting policies, and incite action by delivering such messages with emotional tones, sometimes chosen strategically. 
+
+In 2008, CEO of Maple Leaf Foods Michael McCain issued an apology for health standard failures that lead to listeriosis outbreaks causing 23 deaths and approximately 4,000 illnesses. Despite this failure, customers remained loyal to Maple Leaf Foods, with credit often going to the sincerity of the apology and the personal accountability expressed therein. Would the same message delivered in a neutral or angry tone have had a similar impact? 
+
+### Novelty and Contribution
+
+While a host of literature exists within the emotional contagion realm, there is a lack of research investigating how specific emotional content of a message effects a decision maker and the degree to which observed differences can be attributed to emotional contagion. 
+
+Thus, our motivation with respect to literature is the gap in looking at responding to emotions rather than emotional decision making itself.
+
+To induce emotion, this research will incorporate the expansive power of Veo3's generative AI software which can produce extremely life like videos of human-like characters. These characters can be coded to express specific emotional profiles. This is extremely beneficial as it allows for enhanced reproducibility across laboratories and allows us to standardize the emotional profiles and content of the messages that the participants receive in the lab.  
+
+Further, this research will rely on state of the art facial recognition software which uses advanced neural networks and real time video analysis to characterize and measure unconscious physiological responses to the content of the message itself. This provides more accurate maeasurements than the traditional method of relying on post-hoc analysis of recorded videos by researchers and their assistants. The latter method can be sub-optimal as many of the subtle cues that are involved in emotional contagion are unconsciously perceived and physiological response cues such as heart rate and blood pressure are again, not necessarily detectable in classical video analysis, even when the researcher has training in this field. In contrast, teh facial recgnition software we plan to use (Noldus FaceReader) is extensively used in psychological and behavioural science and can detect these subtle and subliminal cues (**!!include FaceReader's info/ accuracy in an Appendix**). 
+
+
+### Experimental Design 
+
+Our goal with this experiment is to study how the emotional content of a request affects donations. We design an experiment that separately identifies the effects of the emotional content of the request from the emotions of the decision maker. We do this by eliciting baseline behavior in a neutrally framed donation game and comparing it to emotionally framed donation levels. We control for the decision maker’s emotions using a facial recognition tool (Noldus FaceReader 10) that measures emotional changes between the neutral frame and emotional frames. We quantify emotional contagion as the magnitude change from the neutral frame toward the emotion used in the emotional frame. 
+
+Low contagion (small amounts of unconscious emotional change via physiological response) is evidence that the emotional content of the request itself causes changes in behaviour, while high degrees of contagion (large amount of unscious emotional change via phsyiological response) are evidence that the emotional tone of the request induces a similar emotion (contagion), thereby driving actions through the decision makers own emotions. In other words, our design identifies changes in donation behaviour, separating whether donations increase because of the requester’s emotions (via tone) or the decision maker’s. 
+
+By using three types of requests (collaborative, competitive, combative(?) or neutral) and three emotional tones (happy(?), angry, sad, neutral), we are also able to identify whether appeals for donations respond differentially to different emotional tones and under different economic environments. For example, consider the following statements: 
+
+(Competitive) Our community has been consistently underfunded, while other regions receive upgrades and expansions. Consider donating to our schools. 
+
+(Collaborative) Investing in our community is a shared responsibility and provides the help our students need. Consider donating to our schools. 
+
+(Neutral) Our community is requesting funds for projects. Consider donating to our schools. 
+Each of these three statements is to be read by each of the three different emotional tones for a 3 × 3 design. 
+
+
 
 ## 1. Emotional Tone in Communication and Decision-Making
 
@@ -21,7 +54,11 @@ Psychology studies on persuasion (*NEED CITATION*) mirror these findings: for in
 
 ## 2. Emotional Contagion in Economic Decision-Making
 
-Emotional contagion refers to the phenomenon where one person’s emotions spread to others, causing recipients to “catch” the same feelings. In decision-making contexts, emotional contagion can occur when the mood of one individual (or a piece of content) influences the emotional state and subsequent choices of another, *distinct* from any direct informational effect of the communication. The **Emotions as Social Information (EASI)** model (Van Kleef, G. A. et al, 2004 **2010??**) formalizes this distinction: an observer may either consciously infer information from another’s emotion (a strategic/cognitive route) or unconsciously mimic and feel that emotion themselves (an affective route) \footnote{Indeed there may be neurobiological reasons for this state stemming from "mirror neurons... *EXPAND?*}. The latter route is contagion. Empirical studies have demonstrated emotional contagion in both lab and field settings. A striking example is the massive-scale Facebook experiment by Kramer et al. (2014), which showed that altering the emotional content of users’ news feeds influenced their own posting behaviour. When positive posts were reduced, users’ status updates became more negative, and when negative content was reduced, users produced more positive language. Notably, participants were unaware of the manipulation, so the changes in their behaviour reflect *contagion* of mood rather than a conscious response to message framing. The study concluded that "emotions expressed via online social networks influence the moods of others", providing clear evidence of contagion at scale. In laboratory games, contagion has also been observed. For instance, in a public goods experiment where groups watched emotional videos inducing fear, disgust, or happiness in one member tended to lower everyone’s subsequent cooperation compared to a neutral condition. A rseult that displays that it is as if one person’s emotional state "infected" the group’s mood and trust level. Research by Barsade (2002) found that groups with a happy confederate had improved cooperation and less conflict, indicating that one person’s positive emotion can ripple through others to impact collective decisions. 
+Emotional contagion is the phenomenon whereby people "catch" or internalize the emotions of others, often unconsciously, through mechanisms like facial mimicry, vocal tone, body language, or shared social context. In decision-making contexts, emotional contagion can occur when the mood of one individual (or a piece of content) influences the emotional state and subsequent choices of another, *distinct* from any direct informational effect of the communication. The **Emotions as Social Information (EASI)** model (Van Kleef, G. A. et al, 2004 **2010??**) formalizes this distinction: an observer may either consciously infer information from another’s emotion (a strategic/cognitive route) or unconsciously mimic and feel that emotion themselves (an affective route) \footnote{Indeed there may be neurobiological reasons for this state stemming from "mirror neurons... *EXPAND?*}. The latter route is the emotional contagion phenomenon. 
+
+Empirical studies have demonstrated emotional contagion in both lab and field settings. In a large-scale Facebook experiment, Kramer et al. (2014) showed that altering the emotional content of users’ news feeds influenced their own posting behaviour. When positive posts were reduced, users’ status updates became more negative, and when negative content was reduced, users produced more positive language. Notably, participants were unaware of the manipulation, so the changes in their behaviour reflect the unconcious *contagion* of mood rather than a conscious response to message framing. The study concluded that "emotions expressed via online social networks influence the moods of others", providing clear evidence of contagion at scale. 
+
+In laboratory games, contagion has also been observed. For instance, in a public goods experiment where groups watched emotional videos inducing fear, disgust, or happiness in one member tended to lower everyone’s subsequent cooperation compared to a neutral condition. A result that displays that it is as if one person’s emotional state "infected" the group’s mood and trust level. Research by Barsade (2002) found that groups with a happy confederate had improved cooperation and less conflict, indicating that one person’s positive emotion can ripple through others to impact collective decisions. 
 
 To identify contagion effects apart from direct framing, researchers often use design features like emotion induction that is *incidental* to the decision task or measure participants’ mood changes. For example, one study varied traders’ moods via background music and found mood contagion influenced asset prices even though the music carried no financial information (CITATION NEEDED). Another approach is exploiting natural exogenous mood shocks: economists have linked rainy weather or sports team losses to negative investor sentiment and market moves, attributing this to incidental mood carryover rather than news. 
 

@@ -79,7 +79,7 @@ Obviously, this poses a challenge when measuring emotions. Not only individual d
 
 -- site then provides link to NOLDUSHUB which provides a dashboard with a host of features for accurately measuring emotions -- Price TBD
 
-### additional section
+### Additional Section
 
 Posed or genuine expressions: this is a good section to revisit as possible defence for criticisms
 
