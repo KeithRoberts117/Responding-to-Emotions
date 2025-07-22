@@ -1,6 +1,18 @@
+
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+# Ignore SSH keys
+ed25519
+ed25519_pub
+
+# Ignore Word temp files
+~$*
+
+# Ignore Mac system files
+.DS_Store
 
 /.quarto/
+
+
