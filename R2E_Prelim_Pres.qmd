@@ -1,0 +1,249 @@
+---
+title: "The Medium or the Message?"
+subtitle: "The Causal Impact of Emotional Tone on Decision Making"
+author: "Keith Roberts & Andrew Leal"
+institution: "McMaster University" 
+date: today
+format:
+  revealjs:
+    slide-number: true
+    smaller: true
+    #scrollable: true
+    transition: fade
+    incremental: true
+    auto-animate: true
+    controls: true
+    overview: true
+    chalkboard: false
+    footer: "Preliminary — feedback welcome"
+    preview-links: true 
+execute:
+  echo: false
+  warning: false
+  message: false
+                   
+
+--- 
+
+## Introduction {.smaller}
+
+- Economic choices can be shaped and manipulated by **messages** (policy advisories, charity appeals, public-health nudges)
+
+- However, a message's content does not exist in a vacuum and is heavily influenced by the communicative **tone**
+  - Tone can influence attention, trust, and/or willingness to pay/give
+
+- Separating the *content* from its *tone* has so far been untenable
+  - Not well understood whether the content or the tone matters more in communication
+
+- Recent advances in generative AI and facereading technology allow us to causally test the impact of a message's tone vs its content on a decision maker's choice 
+
+
+---
+
+## Quick Primer {.smaller .scrollable}
+
+- **Emotional tone**: affective quality conveyed by a message (voice, facial expression, wording)
+- **State affect** vs **trait affect**: momentary feelings vs stable dispositions
+- **Emotional contagion**: unintentional convergence of audience affect toward the sender’s displayed affect
+
+
+- **Arousal × Valence Circumplex** (Posner, J. etal., (2005)): 
+  - Arousal = intensity of the emotion
+  - Valence = positivity/negativity i.e. the direction
+
+. . .
+
+![Emotion Circumplex](emotion_circumplex.png){width=4in, height=4in}
+
+---
+
+## Related and Motivating Literature {.scrollable}
+
+1. Necessity of Emotion in Economics
+  - *Simon, H. (1983)*: "...in order to have anything like a complete theory of human rationality, we have to understand what role emotion plays in it."
+  - *Elster, J. (1998)*: Argues emotion is a necessity when studying economic choice
+  - *Lerner, J. S., Li, Y., Valdesolo, P., & Kassam, K. S. (2015)*: Systematic review of judgment and choice research in psychology. Highlights the lagged pace under which economics models are only recently incorporating emotion. 
+  
+2. Emotional Contagion
+  - *Barsade, S. G. (2002)*: Groups with an upbeat experimental partner "caught" their mood, which led to improved cooperation, less conflict, and higher perceived task performance
+  - *Brader, T. (2005)*: Political ads varied only in emotional content (music and imagery designed to evoke either enthusiasm or fear), while keeping the candidate’s message identical -- enthusiasm appeals mobilize committed supporters; fear appeals improved information sourcing
+
+  
+3. Real World Consequences to Emotional Messaging
+  - *Gorodnichenko, Y., Pham, T., & Talavera, O. (2021)*: Analyzes social media information diffusion via political twitter "bots". Enhanced polarization highlights need to further study information diffusion and sentiment pushed by "bot" (AI) content   
+  - *Gorodnichenko, Y., Pham, T., & Talavera, O. (2021)*: Analyze Fed Reserve press conferences via voice-emotion recognition. Find stock prices react significantly with Chair's tone in both directions 
+
+---
+
+## Research Goals and Questions
+
+- Our Goal: Investigate whether emotionally charged communication causally impacts behaviour through conscious persuasion (information) or through emotional contagion
+
+1. RQ1: What is the effect of the emotional contagion/emotional tone from a message?
+2. RQ2: What is the degree of emotional contagion?
+3. RQ3: Does positive/negative emotional tone in a persuasive message change charitable giving relative to a neutral tone?
+
+---
+
+## Contributions {.smaller}
+
+::: {.panel-tabset}
+
+### Novel Methodology  
+
+- Our goal is to investigate an agent's *response* to emotions rather than emotional decision making itself
+
+- To induce emotion, we leverage generative AI video creation software (Sora and/or [Veo3](https://deepmind.google/models/veo/)) to produce extremely life-like videos of humanoid characters
+  - Characters express specific emotional profiles
+  - Enhanced reproducibility and standardized emotional profiles + message content  
+
+- To analyse emotional response, we use Noldus FaceReader: an advanced real-time video analysis software which characterizes and measures unconscious physiological responses 
+
+
+### FaceReader (FACS)
+
+::: {.incremental}
+- An advanced deep learning neural network for facial-emotion recognition
+- Vetted in literature against human scoring of emotions 
+  - Performs as well or better than human scoring in a systematic review of 64 studies (Landmann, E. (2023))
+
+- Facial Action Coding System (FACS) (Ekman and Friesen (1978)) codes facial Action Units (AUs) -- smallest visible units of
+muscular activity in the face
+- AUs help classify six universal facial patterns for anger, disgust, fear, sadness, surprise, and happiness
+
+- [FaceReader](https://noldus.com/facereader){preview-link="true"}
+
+
+:::
+
+:::
+
+---
+
+## Tentative Design
+
+- **Participants**: In person lab sample (McDSL) with possible online extension 
+- **Randomization**: Assign to **Neutral**, **Positive**, or **Negative** tone video (same script; different delivery/visual affect)  
+- **Task**: Participant views AI video then makes a **donation** (or allocation) decision; repeated over rounds
+  - Distraction task on certain round intervals?
+  
+- **Measures**: continuous emotional response recordings from FaceReader; post-video self-reports; baseline covariates
+
+
+---
+
+## Treatments {.smaller} 
+
+| Arm | Script | Delivery (prosody) | Visual affect | Length |
+|-----|--------|---------------------|---------------|--------|
+| Neutral | Fixed | Flat/neutral | Neutral face/visuals | ~45s | 
+| Positive | Fixed | Warm/enthusiastic | Positive valence cues | ~45s |
+| Negative | Fixed | Somber/urgent | Negative valence cues | ~45s |
+
+
+- Between group comparison; data is split into three arms listed in table 
+- Each individual has some emotional reaction to the cue, which is a function of valence and arousal
+
+---
+
+## Key Variables 
+- Data is a tuple $(d,a,v,X; e)$ of: 
+  - donation $d$ 
+  - arousal $a$ 
+  - valence $v$ 
+  - covariates/demographic factors $X$ 
+  - emotional tone $e$ will be a controlled parameter
+
+- Emotional Response to the message: $R_e = f(a, v)$
+---
+
+## Modelling {.smaller}
+
+1. Estimate a linear model for each group to recover coefficients on valence, arousal, and the treatment (tone of message)
+
+2. Estimate a pooled model with interactions of group identifiers and above variables to compare coefficients 
+
+3. Estimate an ordered logit model to recover CDF of donations conditional on variables
+
+  - Compare average marginal effects on donations given changes in individual dependent variables holding others fixed 
+
+--- 
+
+
+## Hypotheses (Directional)
+
+- **H1**: positive tone increases giving vs. neutral  
+- **H2**: negative tone reduces giving vs neutral
+- **H3**: Effects **increase with induced valence/arousal** 
+
+
+
+<!--
+
+---
+
+
+# Implementation (Repo Hooks)
+
+- **Stimuli**: `assets/stimuli/veo3_*.mp4` *(placeholder paths)*  
+- **FaceReader**: `docs/FaceReader_Methodology.pdf` *(placeholder link)*  
+- **Prereg**: `docs/prereg_draft.qmd` *(optional)*  
+- **Analysis**: `analysis/01_pilot.Rmd` *(or .qmd)*
+
+::: callout-tip
+Swap the above with the **actual paths** from your repo before rendering.
+:::
+--> 
+
+---
+
+## Expected Payoffs
+
+- How do the two induced channels (tone and content) seperately influence the donation outcome
+- If tone causally shifts giving, we learn **how to communicate** for policy, science, and fundraising  
+- Mechanism evidence can inform **when** tone works (arousal vs valence; audience traits)  
+- Even nulls are informative for **designing messages** and **guarding against over-claiming**
+
+
+# Thank You 
+
+
+<!---
+
+# Appendix A — Alternative Specs (backup)
+
+- **Binary outcome**: \(\Pr(Y_i{>}0)\) via logit/probit + LPM robustness.  
+- **Pre-post**: if baseline giving available, estimate on \(\Delta Y_i\).  
+- **Index** outcomes via standardized z-scores.  
+- **HTE**: interactions with trait empathy/skepticism; plot marginal effects.
+
+---
+
+# Appendix B — Minimal Tables (placeholders)
+
+| Balance (key vars) | Neutral | Positive | Negative | p-value |
+|---|---:|---:|---:|---:|
+| Age |  |  |  |  |
+| Empathy score |  |  |  |  |
+| Baseline trust |  |  |  |  |
+
+| Main effects | Coef. | SE | p |
+|---|---:|---:|---:|
+| Positive |  |  |  |
+| Negative |  |  |  |
+| FR valence |  |  |  |
+
+---
+
+# Appendix C — References (hooks)
+
+- Add/verify entries in `assets/references.bib` and cite inline with `[@key]` as needed.  
+- Example inline cite: persuasion theory [@kamenica2011] and field content experiments [@bertrand2010].  
+
+::: callout-warning
+**Remember**: ensure the `.bib` keys exist in your file; update keys/titles to match your Zotero/refs.
+:::
+
+---
+
+-->
